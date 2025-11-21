@@ -1,8 +1,8 @@
 package com.priadi.dummyapp.services.impl;
 
-import com.priadi.dummyapp.domain.BaseResponse;
-import com.priadi.dummyapp.domain.dto.LoginDTO;
-import com.priadi.dummyapp.domain.request.LoginRequest;
+import com.priadi.dummyapp.dto.BaseResDTO;
+import com.priadi.dummyapp.dto.LoginResDTO;
+import com.priadi.dummyapp.dto.LoginReqDTO;
 import com.priadi.dummyapp.model.UserModel;
 import com.priadi.dummyapp.repository.UserRepository;
 import com.priadi.dummyapp.services.AuthService;
@@ -28,12 +28,12 @@ public class AuthServiceImpl implements AuthService {
     @Value("${login.email}")
     private String email;
     @Override
-    public BaseResponse<LoginDTO> login(LoginRequest request) {
-        BaseResponse<LoginDTO> response = new BaseResponse<>();
+    public BaseResDTO<LoginResDTO> login(LoginReqDTO request) {
+        BaseResDTO<LoginResDTO> response = new BaseResDTO<>();
 
         if(request.isValid()){
             if(request.getUsername().equalsIgnoreCase(username) && request.getPassword().equalsIgnoreCase(password)){
-                LoginDTO dto = new LoginDTO();
+                LoginResDTO dto = new LoginResDTO();
                 dto.setName(name);
                 dto.setEmail(email);
                 response.setData(dto);
@@ -49,13 +49,13 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public BaseResponse<LoginDTO> loginOnline(LoginRequest request) {
-        BaseResponse<LoginDTO> response = new BaseResponse<>();
+    public BaseResDTO<LoginResDTO> loginOnline(LoginReqDTO request) {
+        BaseResDTO<LoginResDTO> response = new BaseResDTO<>();
 
         if(request.isValid()){
             UserModel userModel = repository.findByUsernameAndPassword(request.getUsername(), request.getPassword());
             if(userModel != null){
-                LoginDTO dto = new LoginDTO();
+                LoginResDTO dto = new LoginResDTO();
                 dto.setName(userModel.getName());
                 dto.setEmail(userModel.getEmail());
                 response.setData(dto);

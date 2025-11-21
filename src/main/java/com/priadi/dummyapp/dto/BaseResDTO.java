@@ -1,6 +1,6 @@
-package com.priadi.dummyapp.domain;
+package com.priadi.dummyapp.dto;
 
-public class BaseResponse<T> {
+public class BaseResDTO<T> {
     private String message = "success";
     private int code = 200;
     private T data;

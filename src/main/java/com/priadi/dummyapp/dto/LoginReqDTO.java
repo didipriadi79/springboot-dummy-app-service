@@ -1,8 +1,8 @@
-package com.priadi.dummyapp.domain.request;
+package com.priadi.dummyapp.dto;
 
 import io.swagger.v3.oas.annotations.Hidden;
 
-public class LoginRequest {
+public class LoginReqDTO {
     String username;
     String password;
 

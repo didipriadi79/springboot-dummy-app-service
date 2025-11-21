@@ -1,6 +1,6 @@
-package com.priadi.dummyapp.domain.dto;
+package com.priadi.dummyapp.dto;
 
-public class LoginDTO {
+public class LoginResDTO {
     String email;
     String name;
 

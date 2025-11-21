@@ -1,9 +1,9 @@
 package com.priadi.dummyapp.controllers;
 
-import com.priadi.dummyapp.domain.BaseResponse;
-import com.priadi.dummyapp.domain.dto.LoginDTO;
-import com.priadi.dummyapp.domain.dto.UserDTO;
-import com.priadi.dummyapp.domain.request.LoginRequest;
+import com.priadi.dummyapp.dto.BaseResDTO;
+import com.priadi.dummyapp.dto.LoginResDTO;
+import com.priadi.dummyapp.dto.UserResDTO;
+import com.priadi.dummyapp.dto.LoginReqDTO;
 import com.priadi.dummyapp.services.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,31 +25,31 @@ public class HomeController {
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/login")
-    public BaseResponse<LoginDTO> login(@RequestBody LoginRequest request){
-        BaseResponse<LoginDTO> response = new BaseResponse<>();
+    public BaseResDTO<LoginResDTO> login(@RequestBody LoginReqDTO request){
+        BaseResDTO<LoginResDTO> response = new BaseResDTO<>();
         response = authService.login(request);
         return response;
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/login-online")
-    public BaseResponse<LoginDTO> loginOnline(@RequestBody LoginRequest request){
-        BaseResponse<LoginDTO> response = new BaseResponse<>();
+    public BaseResDTO<LoginResDTO> loginOnline(@RequestBody LoginReqDTO request){
+        BaseResDTO<LoginResDTO> response = new BaseResDTO<>();
         response = authService.loginOnline(request);
         return response;
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/get-all-user")
-    public BaseResponse<List<UserDTO>> getAllUser(){
-        BaseResponse<List<UserDTO>> response = new BaseResponse<>();
+    public BaseResDTO<List<UserResDTO>> getAllUser(){
+        BaseResDTO<List<UserResDTO>> response = new BaseResDTO<>();
 
-        List<UserDTO> listUser = new ArrayList<>();
-        UserDTO user1 = new UserDTO();
+        List<UserResDTO> listUser = new ArrayList<>();
+        UserResDTO user1 = new UserResDTO();
         user1.setId(1L);
         user1.setName("didi");
         user1.setEmail("didi@gmail.com");
         user1.setUsername("didi79");
 
-        UserDTO user2 = new UserDTO();
+        UserResDTO user2 = new UserResDTO();
         user2.setId(2L);
         user2.setName("didi");
         user2.setEmail("didi@gmail.com");
