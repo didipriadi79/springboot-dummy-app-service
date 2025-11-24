@@ -1,6 +1,9 @@
 package com.priadi.dummyapp.dto;
 
-public class UserResDTO {
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.v3.oas.annotations.Hidden;
+
+public class UserDTO {
     private Long id;
     private String name;
     private String email;
@@ -45,5 +48,21 @@ public class UserResDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Hidden
+    @JsonIgnore
+    public boolean isValid(){
+        if(
+                getName() == null || getName().equalsIgnoreCase("") ||
+        getPassword() == null || getPassword().equalsIgnoreCase("") ||
+        getEmail() == null || getEmail().equalsIgnoreCase("") ||
+        getUsername() == null || getUsername().equalsIgnoreCase("")
+        ){
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 }

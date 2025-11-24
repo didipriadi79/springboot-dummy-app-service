@@ -1,10 +1,13 @@
 package com.priadi.dummyapp.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.Hidden;
 
-public class LoginReqDTO {
+public class LoginDTO {
     String username;
     String password;
+    String email;
+    String name;
 
     public String getUsername() {
         return username;
@@ -22,7 +25,24 @@ public class LoginReqDTO {
         this.password = password;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Hidden
+    @JsonIgnore
     public boolean isValid(){
         if(getUsername() == null || getPassword() == null){
             return false;
