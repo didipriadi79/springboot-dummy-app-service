@@ -57,8 +57,6 @@ public class UserServiceImpl implements UserService {
                 UserModel userModel = userGet.get();
                 userModel.setEmail(user.getEmail());
                 userModel.setName(user.getName());
-                userModel.setPassword(user.getPassword());
-                userModel.setUsername(user.getUsername());
                 repository.save(userModel);
             }
             else {

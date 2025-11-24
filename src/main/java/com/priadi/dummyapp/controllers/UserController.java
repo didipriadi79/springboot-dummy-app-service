@@ -3,7 +3,6 @@ package com.priadi.dummyapp.controllers;
 import com.priadi.dummyapp.AppConstants;
 import com.priadi.dummyapp.dto.BaseResDTO;
 import com.priadi.dummyapp.dto.UserDTO;
-import com.priadi.dummyapp.model.UserModel;
 import com.priadi.dummyapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,7 +27,7 @@ public class UserController {
     @RequestMapping(method = RequestMethod.POST, path = "/add")
     public BaseResDTO<String> addUser(@RequestBody UserDTO request){
         BaseResDTO<String> response = new BaseResDTO<>();
-        if(request.isValid()){
+        if(request.isValidForAdd()){
             response = userService.addUser(request);
         }
         else {
@@ -40,7 +39,7 @@ public class UserController {
     @RequestMapping(method = RequestMethod.PUT, path = "/edit")
     public BaseResDTO<String> editUser(@RequestBody UserDTO request){
         BaseResDTO<String> response = new BaseResDTO<>();
-        if(request.isValid() && request.getId() != null){
+        if(request.isValidForEdit()){
             response = userService.editUser(request);
         }
         else {

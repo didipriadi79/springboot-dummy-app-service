@@ -52,12 +52,27 @@ public class UserDTO {
 
     @Hidden
     @JsonIgnore
-    public boolean isValid(){
+    public boolean isValidForAdd(){
         if(
-                getName() == null || getName().equalsIgnoreCase("") ||
-        getPassword() == null || getPassword().equalsIgnoreCase("") ||
-        getEmail() == null || getEmail().equalsIgnoreCase("") ||
-        getUsername() == null || getUsername().equalsIgnoreCase("")
+            getName() == null || getName().equalsIgnoreCase("") ||
+            getPassword() == null || getPassword().equalsIgnoreCase("") ||
+            getEmail() == null || getEmail().equalsIgnoreCase("") ||
+            getUsername() == null || getUsername().equalsIgnoreCase("")
+        ){
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    @Hidden
+    @JsonIgnore
+    public boolean isValidForEdit(){
+        if(
+            getId() == null ||
+            getName() == null || getName().equalsIgnoreCase("") ||
+            getEmail() == null || getEmail().equalsIgnoreCase("")
         ){
             return false;
         }
